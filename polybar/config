@@ -1,0 +1,512 @@
+
+# ------------------------------ #
+# Configuration File For Polybar #
+# ------------------------------ #
+
+### Colors ###
+[colors]
+
+## Text Color ##
+foreground = #dadada
+
+## Text Color - Alternative - Everblush cyan
+foreground-alt = #6cbfbf
+
+## Blueis Modules Color ##
+background-alt = #aa7E9191
+
+## Background Color ##
+background = #2F383E
+
+## Everblush green ##
+highlight = #8ccf7e
+
+### Bar Settings ###
+[bar/nasa]
+width = 100%
+height = 23
+radius = 0.0
+fixed-center = true
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+border-size = 0
+border-top-size = 0
+border-bottom-size = 0
+
+border-color = #141a1b
+padding = 0
+module-margin = 0
+
+### Fonts ###
+
+font-0 = "Noto Sans:size=9;0"
+#font-0 = "JetBrainsMono Nerd Font:size=9;2"
+#font-0 = "FiraCode Nerd Font:size=10;2"
+#font-1 = "Dejavu Font:size=10;2"
+font-2 = "Terminus:size=10;2"
+font-3 = "DejaVu Sans Mono wifi ramp:size=10;2"
+
+### bspwm Config ###
+modules-left = bspwm float-mode xwindow
+modules-center =
+modules-right = wired-network wlan arch-aur-updates simple-weather pulseaudio cpu temperature brightness battery date menu
+
+#separator = |
+separator-background = ${colors.background}
+tray-position = right
+tray-padding = 0
+scroll-down = bspc desktop -f prev.local
+scroll-up = bspc desktop -f next.local
+wm-name = bspwm
+wm-restack = bspwm
+enable-ipc = true
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+### Other Setting ###
+[settings]
+screenchange-reload = true
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+### Xwindow ###
+[module/xwindow]
+type = internal/xwindow
+
+label = %title:0:78:%
+label-padding-left = 1
+label-padding-right = 0
+label-empty-padding-left = 1
+label-empty-padding-right = 1
+label-empty = Arch | bspwm
+
+## Without Colors ##
+label-empty-foreground = ${colors.foreground}
+format-foreground = ${colors.foreground}
+
+# ## With Colors ##
+# label-empty-foreground = #000000
+# label-empty-background = ${colors.background-alt}
+# format-foreground = #000000
+# format-background = ${colors.background-alt}
+
+### WorkSpaces ###
+[module/bspwm]
+type = internal/bspwm
+
+pin-workspaces = true
+inline-mode = false
+enable-click = true
+enable-scroll = true
+reverse-scroll = true
+fuzzy-match = true
+format = <label-state>
+format-font = 2
+label-monitor = %name%
+
+ls-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+# ws-icon-6 = 7;
+# ws-icon-8 = 8;
+# ws-icon-9 = 9; 
+# ws-icon-default = 
+#ls-icon-0 = 1;
+# 
+
+label-focused = %name%
+# label-focused-foreground = ${colors.foreground}
+# label-focused-background = ${colors.background-alt}
+label-focused-padding = 2
+label-focused-foreground = ${colors.highlight}
+label-focused-underline = ${colors.highlight}
+
+label-occupied = '%name%
+label-occupied-foreground = ${colors.foreground}
+label-occupied-background = ${colors.background}
+label-occupied-padding = 2
+
+label-urgent = %name%
+label-urgent-foreground = ${colors.foreground}
+label-urgent-background = ${colors.background}
+label-urgent-padding = 2
+
+label-empty = %name%
+label-empty-foreground = ${colors.foreground}
+label-empty-background = ${colors.background}
+label-empty-padding = 2
+
+; Separator in between workspaces
+label-separator =
+label-separator-padding = 0
+label-separator-foreground = ${color.ALTBLACK}
+
+;_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+### Cpu Load ###
+#[module/cpu]
+#type = internal/cpu
+#interval = 2
+#format-prefix = " "
+#format-prefix-padding-right = 0
+#label = %percentage:2%%
+#format-foreground = ${colors.foreground}
+#format-background = ${colors.background}
+#format-padding = 1
+
+### Cpu Temperature ###
+#[module/temperature]
+#type = internal/temperature
+#thermal-zone = 0
+#warn-temperature = 110
+#
+#format = <ramp> <label>
+#format-warn = <ramp> <label-warn>
+#format-background = ${colors.background}
+#format-warn-foreground = ${colors.foreground}
+#format-foreground = ${colors.foreground}
+#format-padding = 1
+#format-warn-padding = 1
+#label = %temperature-c%
+#label-warn = %temperature-c%
+#interval = 5
+#
+#ramp-0 = 
+#ramp-1 = 
+#ramp-2 = 
+#ramp-3 = 
+#ramp-4 = 
+#ramp-5 = 
+#ramp-6 = 
+#ramp-7 = 
+#ramp-8 = 
+#ramp-9 = 
+#ramp-font = 2
+
+;_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/brightness]
+type = internal/backlight
+
+; Use the following command to list available cards:
+; $ ls -1 /sys/class/brightness/
+card = intel_backlight
+
+enable-scroll = true
+
+format = <ramp> <label>
+format-background = ${color.foreground}
+format-padding = 1
+
+label = %percentage%%
+label-foreground = ${color.foreground}
+
+ramp-0 = " "
+ramp-1 = " "
+ramp-2 = " "
+ramp-3 = " "
+ramp-4 = " "
+ramp-5 = " "
+ramp-6 = " "
+ramp-7 = " "
+ramp-8 = " "
+ramp-9 = " "
+ramp-font = 2
+ramp-foreground = ${color.foreground}
+
+;_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/battery]
+type=internal/battery
+battery=BAT0
+adapter=AC
+poll-interval = 2
+
+label-charging="  %percentage%% "
+label-charging-foreground=#b48ead
+ramp-capacity-0=" "
+ramp-capacity-1=" "
+ramp-capacity-2=" "
+ramp-capacity-3=" "
+ramp-capacity-4=" "
+ramp-capacity-5=" "
+format-discharging=<ramp-capacity> <label-discharging>
+format-discharging-foreground=${colors.foreground}
+label-discharging=%percentage%%
+label-full= "   100% "
+label-full-foreground = ${colors.foreground}
+
+;_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+### Date and Time ###
+[module/date]
+type = internal/date
+# interval = 1
+
+time =  %H:%M 
+# time =  %I:%M %p 
+# time =  %a %H:%M 
+# time =  %H:%M:%S 
+
+date-alt = %A %B %e %Y
+
+label = %date% %time%
+label-foreground = ${colors.foreground}
+label-background = ${colors.background}
+label-padding = 1
+label-padding-right = 1
+label-padding-left = 0
+
+;_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+### Audio ###
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <ramp-volume> <label-volume>
+# format-volume =  <label-volume>
+label-volume = %percentage%%
+format-volume-foreground = ${colors.foreground}
+format-volume-background = ${colors.background}
+format-volume-padding = 1
+click-right = kitty -e pulsemixer
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
+ramp-volume-4 = 
+ramp-volume-5 = 
+ramp-volume-6 = 
+ramp-volume-7 = 
+ramp-volume-8 = 
+ramp-volume-9 = 
+ramp-volume-font = 2
+
+label-muted =  muted
+format-muted-padding = 1
+format-muted-foreground = ${colors.foreground}
+# format-muted-background = ${colors.background-alt}
+
+;_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+### wired-network ###
+[module/wired-network]
+type = internal/network
+interface = enp3s0
+interval = 1
+
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+label-connected = | %{A1:alacritty -e nmtui:}  %downspeed%%{A}
+# label-connected = | %{A1:nm-connection-editor:}%  %downspeed%{A}
+
+format-connected-background = ${colors.background}
+format-disconnected-background = ${colors.background}
+label-connected-foreground = ${colors.foreground}
+
+format-connected-padding = 0
+format-disconnected-padding = 0
+label-connected-padding-right = 1
+label-disconnected-padding-right = 1
+# label-connected-padding-right =
+
+;_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+### Wifi/Down And up Speed ###
+[module/wlan]
+type = internal/network
+interface = wlp2s0
+interval = 1
+accumulate-stats = true
+unknown-as-up = true
+
+format-connected-background = ${colors.background}
+format-disconnected-background = ${colors.background}
+label-connected-foreground = ${colors.foreground}
+label-disconnected-foreground = ${colors.foreground}
+
+format-connected-padding = 0
+label-disconnected-padding = 0
+label-connected-padding-right = 1
+label-disconnected-padding-right = 1
+
+label-connected = %{A1:alacritty -e nmtui:} %downspeed%%{A}
+label-disconnected = %{A1:alacritty -e nmtui:}睊  Offline%{A}
+format-connected = | <ramp-signal><label-connected>
+format-disconnected = | <label-disconnected>
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+
+# ramp-signal-0 = 
+# ramp-signal-1 = 
+# ramp-signal-2 = 
+# ramp-signal-3 = 
+# ramp-signal-4 = 
+# ramp-signal-5 = 
+# ramp-signal-6 = 
+# ramp-signal-7 = 
+# ramp-signal-8 = 
+# ramp-signal-9 = 
+
+# ramp-signal-0 = 
+# ramp-signal-1 = 
+# ramp-signal-2 = 
+# ramp-signal-3 = 
+# ramp-signal-4 = 
+# ramp-signal-5 = 
+
+;_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+### Pacman and Aur Updates ###
+[module/arch-aur-updates]
+type = custom/script
+exec = ~/.config/polybar/scripts/check-all-updates.sh
+interval = 7200
+label =  :%output%
+label-padding = 1
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+format-prefix-foreground = ${colors.foreground}
+
+;_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+### Simple-Weather ###
+#[module/simple-weather]
+#type = custom/script
+#exec = ~/.config/polybar/scripts/simple-weather.sh
+#format-background = ${colors.background}
+#format-foreground = ${colors.foreground}
+#interval = 1200
+#label-padding = 1
+#label-font = 3
+
+;_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+### Floating Mode ###
+#[module/float-mode]
+#type = custom/script
+#exec = echo []=
+#format-background = ${colors.background}
+#format-foreground = ${colors.foreground}
+#click-left = bspc node focused.tiled -t floating || bspc node focused.floating -t tiled
+#click-right = alacritty --hold -e cal -y -m
+## click-left = ~/.config/dmenu/dmenu-patched
+#
+##     
+
+
+;_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/menu]
+type = custom/menu
+expand-left = true
+
+#; BSPWM LAYOUTS
+#menu-0-0 = " 缾  LAYOUT  "
+#menu-0-0-exec = #menu.open.1
+#menu-0-0-background = ${nord.background}
+#menu-0-0-foreground = ${nord.text}
+#menu-0-0-font = 6
+#
+#menu-1-0 = " default   "
+#menu-1-0-exec = bsp-layout set tiled
+#menu-1-0-background = ${nord.background}
+#menu-1-0-foreground = ${nord.text}
+#menu-1-0-font = 6
+#
+#menu-1-1 = " tall-left   "
+#menu-1-1-exec = bsp-layout set tall
+#menu-1-1-background = ${nord.background}
+#menu-1-1-foreground = ${nord.text}
+#menu-1-1-font = 6
+#
+#menu-1-2 = " tall-right   "
+#menu-1-2-exec = bsp-layout set rtall
+#menu-1-2-background = ${nord.background}
+#menu-1-2-foreground = ${nord.text}
+#menu-1-2-font = 6
+#
+#menu-1-3 = " wide-top   "
+#menu-1-3-exec = bsp-layout set wide
+#menu-1-3-background = ${nord.background}
+#menu-1-3-foreground = ${nord.text}
+#menu-1-3-font = 6
+#
+#menu-1-4 = " wide-bottom   "
+#menu-1-4-exec = bsp-layout set rwide
+#menu-1-4-background = ${nord.background}
+#menu-1-4-foreground = ${nord.text}
+#menu-1-4-font = 6
+#
+#menu-1-5 = " even   "
+#menu-1-5-exec = bsp-layout set even
+#menu-1-5-background = ${nord.background}
+#menu-1-5-foreground = ${nord.text}
+#menu-1-5-font = 6
+#
+;_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+; WM OPTIONS
+menu-0-0 = "   SESSION   "
+menu-0-0-exec = #menu.open.1
+menu-0-0-background = ${colors.background}
+menu-0-0-foreground = ${colors.foregound-alt}
+menu-0-0-font = 6
+
+menu-1-0 = "    Lock   "
+menu-1-0-exec = slock
+menu-1-0-background = ${colors.background}
+menu-1-0-foreground = ${colors.foregound-alt}
+menu-1-0-font = 6
+
+menu-1-1 = "  﫼  Logout   "
+menu-1-1-exec = bspc quit
+menu-1-1-background = ${colors.background}
+menu-1-1-foreground = ${colors.foregound-alt}
+menu-1-1-font = 6
+
+menu-1-2 = "  襤  Shut down   "
+menu-1-2-exec = systemctl -i poweroff
+menu-1-2-background = ${colors.background}
+menu-1-2-foreground = ${colors.foregound-alt}
+menu-1-2-font = 6
+
+menu-1-3 = "    Sleep   "
+menu-1-3-exec = systemctl suspend
+menu-1-3-background = ${colors.background}
+menu-1-3-foreground = ${colors.foregound-alt}
+menu-1-3-font = 6
+
+menu-1-4 = "    Reboot   "
+menu-1-4-exec = systemctl reboot
+menu-1-4-background = ${colors.background}
+menu-1-4-foreground = ${colors.foregound-alt}
+menu-1-4-font = 6
+
+label-open = "    襤  "
+label-open-background = ${colors.background}
+label-open-foreground = ${colors.foregound-alt}
+label-open-font = 6
+
+label-close = "         "
+label-close-background = ${colors.background}
+label-close-foreground = ${colors.foregound-alt}
+label-close-font = 5
+
+;label-separator = "  "
+;label-separator-background = ${colors.background}
+;label-separator-foreground = ${colors.foregound-alt}
+;label-separator-font = 4
+
+;_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
